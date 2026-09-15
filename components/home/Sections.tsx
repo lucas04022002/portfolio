@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMode } from "@/lib/mode";
 import { projects, featuredProjects } from "@/data/projects";
 import { expertise, services, process, faq } from "@/data/expertise";
-import { CONTACT } from "@/data/site";
+import { CONTACT, PARCOURS } from "@/data/site";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { Reveal } from "@/components/ui/Reveal";
 import { ArrowLink, Button, Eyebrow, MetricBlock, Section } from "@/components/ui/primitives";
@@ -204,13 +204,16 @@ export function About() {
         <Reveal delay={0.08}>
           <div className="space-y-5 text-[17px] leading-relaxed text-muted">
             <p>
-              Je suis développeur full-stack, avec une préférence marquée pour les produits techniques :
-              ceux qui traitent de la donnée, qui automatisent quelque chose, ou dont la règle métier
-              est plus difficile que l&apos;interface.
+              J&apos;ai commencé par démonter et réparer des ordinateurs, bien avant d&apos;écrire
+              une ligne de code. J&apos;ai passé deux ans à coordonner des livraisons et à encadrer
+              une équipe, puis je me suis formé au développement à la Wild Code School.
             </p>
             <p>
-              J&apos;aime partir d&apos;un problème, comprendre comment il fonctionne vraiment, puis construire
-              la solution entière — interface, backend, base de données, intégrations, mise en production.
+              Aujourd&apos;hui je suis développeur full-stack, avec une préférence marquée
+              pour les produits techniques : ceux qui traitent de la donnée, qui automatisent quelque
+              chose, ou dont la règle métier est plus difficile que l&apos;interface. Je pars d&apos;un
+              problème, je comprends comment il fonctionne vraiment, puis je construis la solution
+              entière — interface, backend, base de données, intégrations, mise en production.
             </p>
             <p className="text-bright">
               {mode === "recruiter"
@@ -225,6 +228,27 @@ export function About() {
             <MetricBlock value="1" label="modèle supprimé" source="après un test hors échantillon défavorable" accent />
           </div>
         </Reveal>
+      </div>
+
+      {/* Le parcours : trois étapes datées, parce que l'ordre dit quelque chose ici. */}
+      <div className="mt-24">
+        <Reveal>
+          <p className="eyebrow">Parcours</p>
+        </Reveal>
+        <ol className="mt-6">
+          {PARCOURS.map((etape, i) => (
+            <Reveal key={etape.title} delay={0.05 * i} as="li">
+              <div className="hairline grid gap-2 py-7 md:grid-cols-[minmax(0,12ch)_minmax(0,24ch)_minmax(0,1fr)] md:items-baseline md:gap-10">
+                <span className="font-mono text-[12px] tracking-[0.12em] text-accent">{etape.period}</span>
+                <div>
+                  <h3 className="text-[18px] font-medium leading-snug text-bright">{etape.title}</h3>
+                  {etape.place && <p className="mt-1 text-[14px] text-faint">{etape.place}</p>}
+                </div>
+                <p className="max-w-[62ch] text-[15.5px] leading-relaxed text-muted">{etape.detail}</p>
+              </div>
+            </Reveal>
+          ))}
+        </ol>
       </div>
     </Section>
   );
