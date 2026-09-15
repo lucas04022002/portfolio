@@ -15,6 +15,17 @@ export const CONTACT = {
   cv: "/cv.pdf",
 } as const;
 
+/**
+ * Mentions légales. `siren` reste nul tant que la micro-entreprise n'est pas
+ * immatriculée : la page bascule d'elle-même sur la forme « personne physique »
+ * et reprend la forme professionnelle dès qu'un numéro est renseigné ici.
+ */
+export const LEGAL = {
+  siren: null as string | null,
+  denomination: "Lucas Guilhot",
+  departement: "Haute-Garonne (31), France",
+} as const;
+
 export const STACK_LINE = "Next.js · React · TypeScript · Node · Python · FastAPI · PostgreSQL · Docker";
 
 /**

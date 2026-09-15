@@ -6,6 +6,7 @@ import { projects, featuredProjects } from "@/data/projects";
 import { expertise, services, process, faq } from "@/data/expertise";
 import { CONTACT, PARCOURS } from "@/data/site";
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import { ProjectForm } from "@/components/home/ProjectForm";
 import { Reveal } from "@/components/ui/Reveal";
 import { ArrowLink, Button, Eyebrow, MetricBlock, Section } from "@/components/ui/primitives";
 
@@ -274,16 +275,16 @@ export function Contact() {
       </Reveal>
 
       <Reveal delay={0.08} className="mt-12">
-        <div className="flex flex-wrap items-center gap-3">
-          <Button href={`mailto:${CONTACT.email}`}>
-            {mode === "recruiter" ? "M'écrire" : "Décrire mon projet"}
-          </Button>
-          {mode === "recruiter" && (
+        {mode === "recruiter" ? (
+          <div className="flex flex-wrap items-center gap-3">
+            <Button href={`mailto:${CONTACT.email}`}>M&apos;écrire</Button>
             <Button href={CONTACT.cv} variant="outline">
               Télécharger mon CV
             </Button>
-          )}
-        </div>
+          </div>
+        ) : (
+          <ProjectForm />
+        )}
 
         <div className="mt-14 hairline grid gap-8 pt-10 sm:grid-cols-3">
           <div>

@@ -47,17 +47,29 @@ lib/
   mode.tsx                le double parcours (magasin externe + contexte)
 ```
 
-## À compléter avant la mise en ligne
+## À compléter
 
-- `data/site.ts` : le domaine définitif et l'adresse LinkedIn.
-- `public/cv.pdf` : remplacer le marque-place par le vrai CV.
-- `app/mentions-legales/page.tsx` : statut, SIREN et hébergeur.
-- Les liens `live` des projets dans `data/projects.ts`, une fois les produits
-  déployés. Tant qu'ils sont absents, les études de cas affichent « mise en
-  ligne en préparation » plutôt qu'un lien mort.
+- `data/site.ts` : renseigner `LEGAL.siren` dès que la micro-entreprise est
+  immatriculée. La page des mentions légales bascule alors d'elle-même de la
+  forme « personne physique » à la forme professionnelle.
+
+## Variables d'environnement
+
+Le formulaire de demande de projet envoie les messages par l'API Resend. Sans
+ces variables, la route `/api/projet` répond 503 et le formulaire affiche un
+lien d'écriture directe plutôt qu'un faux « message envoyé ».
+
+| Variable | Rôle |
+| --- | --- |
+| `RESEND_API_KEY` | Clé d'API Resend. À saisir dans Coolify, jamais dans le dépôt. |
+| `CONTACT_FROM` | Adresse d'expédition, sur un domaine vérifié chez Resend (par exemple `site@lucasguilhot.fr`). |
+| `CONTACT_TO` | Destinataire. Par défaut, l'adresse de `CONTACT.email`. |
+
+Ces trois variables sont lues à l'exécution, pas à la construction : elles
+n'ont pas besoin d'être disponibles au moment du build.
 
 ## Déploiement
 
-Site entièrement statique : `npm run build` produit des pages pré-rendues.
-Vercel fonctionne sans configuration ; un VPS avec Coolify aussi, via la
-commande `npm run build` puis `npm run start`.
+Pages pré-rendues, plus une route serveur pour le formulaire : `npm run build`
+puis `npm run start`. Un VPS avec Coolify convient ; un hébergement purement
+statique ne conviendrait plus, la route `/api/projet` ayant besoin d'un serveur.
