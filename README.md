@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Lucas Guilhot
 
-## Getting Started
-
-First, run the development server:
+Un site, deux parcours : **recruteur** et **porteur de projet**. Le choix vit
+dans le navigateur, se pose sur `<html data-mode>` avant la première peinture,
+et change le discours — jamais les faits.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev     # développement, http://127.0.0.1:3000
+npm run build   # construction de production
+npm run lint    # ESLint
+npx tsc --noEmit
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Ce qu'il faut savoir avant de toucher au code
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Aucune métrique inventée.** Chaque chiffre affiché est reproductible : un
+compte de tests réellement exécutés, une mesure de backtest, ou un calcul exact.
+Si une mesure n'existe pas, on parle de la complexité du problème — on ne la
+remplace pas par un nombre flatteur.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Un projet = un objet.** Tout est déclaratif dans `data/projects.ts`. Ajouter
+un projet, c'est ajouter un objet et déposer ses captures dans
+`public/projects/`. Les pages d'étude de cas, le plan du site et les données
+structurées suivent tout seuls.
 
-## Learn More
+**Deux récits, une source.** Chaque projet porte `recruiterDescription` et
+`freelanceDescription`. Le contenu factuel est commun ; seul l'angle change.
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+app/
+  layout.tsx              en-tête, pied de page, données structurées Person
+  page.tsx                accueil (composée par components/home/HomeShell)
+  projets/[slug]/         études de cas, générées statiquement
+  mentions-legales/
+  opengraph-image.tsx     aperçu de partage
+  sitemap.ts robots.ts
+components/
+  layout/                 navigation, pied de page
+  home/                   ouverture, porte d'entrée, sections
+  projects/               carte projet, étude de cas
+  ui/                     primitives et apparition au défilement
+data/
+  projects.ts  expertise.ts  site.ts
+lib/
+  mode.tsx                le double parcours (magasin externe + contexte)
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## À compléter avant la mise en ligne
 
-## Deploy on Vercel
+- `data/site.ts` : le domaine définitif et l'adresse LinkedIn.
+- `public/cv.pdf` : remplacer le marque-place par le vrai CV.
+- `app/mentions-legales/page.tsx` : statut, SIREN et hébergeur.
+- Les liens `live` des projets dans `data/projects.ts`, une fois les produits
+  déployés. Tant qu'ils sont absents, les études de cas affichent « mise en
+  ligne en préparation » plutôt qu'un lien mort.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Déploiement
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Site entièrement statique : `npm run build` produit des pages pré-rendues.
+Vercel fonctionne sans configuration ; un VPS avec Coolify aussi, via la
+commande `npm run build` puis `npm run start`.

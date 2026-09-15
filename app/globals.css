@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ==========================================================================
+   Design system — Apple (silence, hiérarchie) × Mercedes (noir, matière)
+   × Ferrari (performance, une seule couleur qui parle).
+   Une seule teinte accent, un seul rythme d'espacement, aucune couleur
+   de techno. Tout le reste est noir, blanc cassé et gris.
+   ========================================================================== */
+@theme {
+  /* fonds */
+  --color-void: #050505;
+  --color-deep: #0a0a0a;
+  --color-card: #101010;
+  --color-edge: #1a1a1a;
+
+  /* texte */
+  --color-bright: #f5f5f3;
+  --color-muted: #a1a1a1;
+  --color-faint: #6e6e6e;
+
+  /* accent unique — rouge de performance, employé avec parcimonie */
+  --color-accent: #e01a2b;
+  --color-accent-soft: #ff6b6b;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --container-page: 1440px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+:root { color-scheme: dark; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-void);
+  color: var(--color-bright);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--color-accent); color: #fff; }
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent-soft);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Le rythme typographique : des titres très grands, un interlettrage négatif
+   qui se resserre à mesure que la taille monte. */
+@utility display-xl {
+  font-size: clamp(2.75rem, 8vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: -0.045em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+@utility display-l {
+  font-size: clamp(2.25rem, 5.4vw, 4.75rem);
+  line-height: 0.98;
+  letter-spacing: -0.038em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+@utility display-m {
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  line-height: 1.06;
+  letter-spacing: -0.028em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+@utility lede {
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+  color: var(--color-muted);
+  max-width: 46ch;
+}
+@utility page {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+  @media (min-width: 768px) {
+    padding-inline: 2.5rem;
+  }
+}
+@utility hairline { border-top: 1px solid var(--color-edge); }
+@utility tabular { font-variant-numeric: tabular-nums; }
+
+/* L'unique ombre du site, réservée aux captures produit. */
+@utility shot-shadow { box-shadow: 0 40px 90px -50px rgb(0 0 0 / 0.9); }
+
+/* L'entrée de l'ouverture est écrite en CSS : si le JavaScript est lent, absent
+   ou ralenti par un onglet en arrière-plan, le texte reste lisible — une page ne
+   doit jamais dépendre d'une animation pour être visible. */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: none; }
+}
+@utility rise {
+  animation: rise 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  animation-delay: var(--d, 0s);
+}
+
+/* État masqué posé par le JavaScript uniquement (voir components/ui/Reveal). */
+@utility reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.55s cubic-bezier(0.22, 0.61, 0.36, 1), transform 0.55s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+@utility reveal-on {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .rise { animation: none; opacity: 1; transform: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
 }
