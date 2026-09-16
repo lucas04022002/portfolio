@@ -2,10 +2,10 @@
 export const SITE = {
   name: "Lucas Guilhot",
   role: "Développeur full-stack",
-  location: "Toulouse, France",
+  location: "Toulouse · Remote",
   url: "https://lucasguilhot.fr",
   description:
-    "Développeur full-stack à Toulouse. Je conçois et construis des produits complets : applications web, SaaS, automatisation et traitement de données.",
+    "Lucas Guilhot, développeur full-stack à Toulouse (et à distance). Applications web, SaaS, APIs, automatisation et traitement de données avec React, Next.js, TypeScript, Node.js, Python et FastAPI.",
 } as const;
 
 export const CONTACT = {

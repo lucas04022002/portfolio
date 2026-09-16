@@ -5,6 +5,7 @@ import { CONTACT } from "@/data/site";
 import {
   BUDGETS,
   CHAMPS_VIDES,
+  DELAIS,
   TYPES_PROJET,
   valider,
   type DemandeProjet,
@@ -139,7 +140,16 @@ export function ProjectForm() {
           erreur={erreurs.budget}
           options={BUDGETS}
           vide="Non précisé"
-          className="sm:col-span-2"
+        />
+        <Liste
+          id={`${base}-delai`}
+          label="Délai souhaité"
+          hint="facultatif"
+          value={champs.delai}
+          onChange={modifier("delai")}
+          erreur={erreurs.delai}
+          options={DELAIS}
+          vide="Non précisé"
         />
         <Champ
           id={`${base}-description`}
