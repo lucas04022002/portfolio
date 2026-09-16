@@ -116,14 +116,6 @@ export function Hero() {
             {stack}
           </p>
 
-          <p className="rise mt-6 inline-flex items-center gap-2.5 text-[13.5px] text-muted" style={pas(7)}>
-            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
-            {!chosen
-              ? "Disponible pour un CDI, un CDD ou des missions freelance"
-              : mode === "recruiter"
-                ? "Disponible pour un CDI, un CDD ou une mission longue"
-                : "Disponible pour de nouveaux projets"}
-          </p>
         </div>
 
         {/* La moitié droite n'est jamais vide : c'est là qu'est le produit. */}
