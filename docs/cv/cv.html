@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Lucas Guilhot — Développeur Full-Stack</title>
+<style>
+  /* ------------------------------------------------------------------
+     CV lisible par un robot de tri (ATS) autant que par un humain.
+
+     Une seule colonne : un ATS lit le document de haut en bas, dans
+     l'ordre du flux. Deux colonnes produisent un ordre de lecture
+     imprévisible — c'est la première cause de CV mal analysés.
+     Aucune image, aucune icône, aucun texte dans un dessin : tout est
+     du texte sélectionnable. Titres de sections aux intitulés attendus.
+     ------------------------------------------------------------------ */
+
+  @page { size: A4; margin: 10mm 14mm; }
+
+  :root {
+    --encre: #16181d;
+    --gris: #4a4f58;
+    --clair: #6b7280;
+    --trait: #d6d9de;
+    --accent: #9d1c2a;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  body {
+    margin: 0;
+    font-family: "Calibri", "Carlito", "Helvetica Neue", Arial, sans-serif;
+    font-size: 8.9pt;
+    line-height: 1.33;
+    color: var(--encre);
+    background: #fff;
+    /* Les ligatures (ﬁ, ﬃ) sont extraites telles quelles du PDF : un robot de
+       tri qui cherche « affirmer » ou « efficace » ne les trouve alors pas. */
+    font-variant-ligatures: none;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ---------------------------------------------------------- en-tête */
+
+  header { border-bottom: 2px solid var(--encre); padding-bottom: 5px; }
+
+  h1 {
+    margin: 0;
+    font-size: 19.5pt;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.05;
+  }
+
+  .metier {
+    margin: 1px 0 5px;
+    font-size: 10.6pt;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.005em;
+  }
+
+  .contact {
+    font-size: 9.1pt;
+    color: var(--gris);
+  }
+  .contact span::after {
+    content: "·";
+    margin: 0 6px;
+    color: var(--trait);
+  }
+  .contact span:last-child::after { content: none; }
+
+  /* --------------------------------------------------------- sections */
+
+  section { margin-top: 6px; }
+
+  h2 {
+    margin: 0 0 4px;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    border-bottom: 1px solid var(--trait);
+    padding-bottom: 2px;
+  }
+
+  p { margin: 0 0 4px; }
+
+  .profil { color: var(--gris); max-width: 100%; }
+  .profil strong { color: var(--encre); font-weight: 600; }
+
+  /* ----------------------------------------------------------- blocs */
+
+  .bloc { margin-bottom: 6px; page-break-inside: avoid; }
+  .bloc:last-child { margin-bottom: 0; }
+
+  .ligne {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .titre { font-size: 9.6pt; font-weight: 700; }
+  .titre .sep { font-weight: 400; color: var(--gris); }
+
+  .date {
+    flex: none;
+    font-size: 8.8pt;
+    color: var(--clair);
+    white-space: nowrap;
+  }
+
+  .lien { font-size: 8.8pt; color: var(--accent); white-space: nowrap; }
+
+  .stack {
+    margin: 0 0 2px;
+    font-size: 8.7pt;
+    color: var(--clair);
+    letter-spacing: 0.01em;
+  }
+
+  ul { margin: 0; padding-left: 14px; }
+  li { margin-bottom: 0.5px; color: var(--gris); }
+  li::marker { color: var(--trait); }
+  li strong { color: var(--encre); font-weight: 600; }
+
+  /* ------------------------------------------------------ compétences */
+
+  .comp { margin-bottom: 1.5px; }
+  .comp b {
+    display: inline-block;
+    min-width: 74px;
+    font-size: 9.1pt;
+    font-weight: 700;
+  }
+  .comp span { color: var(--gris); }
+
+  /* ------------------------------------------------------------ pied */
+
+  .duo { display: flex; gap: 26px; }
+  .duo > div { flex: 1; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Lucas Guilhot</h1>
+  <p class="metier">Développeur Full-Stack</p>
+  <p class="contact">
+    <span>Toulouse / Remote</span>
+    <span>06 25 90 84 11</span>
+    <span>lucasguilhot7@gmail.com</span>
+    <span>lucasguilhot.fr</span>
+    <span>github.com/lucas04022002</span>
+    <span>linkedin.com/in/guilhot-lucas</span>
+  </p>
+</header>
+
+<section>
+  <h2>Profil</h2>
+  <p class="profil">
+    Développeur full-stack. Je conçois et développe des produits web complets : interface, API,
+    base de données et mise en production. Une préférence pour les produits qui traitent de la
+    donnée ou automatisent quelque chose. <strong>Cinq produits en ligne, dont quatre réalisés
+    seul de bout en bout.</strong> Après deux ans à coordonner des livraisons et encadrer une
+    équipe, je cherche un poste où l'on mesure avant d'affirmer, et où l'on met en ligne ce
+    qu'on écrit.
+  </p>
+</section>
+
+<section>
+  <h2>Compétences techniques</h2>
+  <p class="comp"><b>Langages</b> <span>TypeScript · JavaScript · Python · SQL</span></p>
+  <p class="comp"><b>Frontend</b> <span>React · Next.js · HTML/CSS · Tailwind</span></p>
+  <p class="comp"><b>Backend</b> <span>Node · Express · FastAPI · API REST · Authentification, rôles et sessions</span></p>
+  <p class="comp"><b>Données</b> <span>PostgreSQL · MySQL · SQLite · Migrations versionnées · pandas</span></p>
+  <p class="comp"><b>Livraison</b> <span>Docker · GitHub Actions · VPS et Coolify · Tests automatisés · Git</span></p>
+</section>
+
+<section>
+  <h2>Projets</h2>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">RushPlay <span class="sep">— SaaS d'analyse du marché des paris sportifs</span></div>
+      <div class="lien">rushplay.fr</div>
+    </div>
+    <p class="stack">Next.js · TypeScript · FastAPI · Python · PostgreSQL · Docker</p>
+    <ul>
+      <li>6 sources de cotes collectées plusieurs fois par jour, dédupliquées, avec reprise après panne.</li>
+      <li><strong>Modèle prédictif construit, testé hors échantillon sur 1 752 matchs jamais vus, puis retiré du produit</strong> : log-loss 1,004 contre 0,978 pour le bookmaker.</li>
+      <li>267 tests automatisés · accessibilité 100/100.</li>
+    </ul>
+  </div>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">ApplyBot <span class="sep">— SaaS B2B pour organismes de formation</span></div>
+      <div class="lien">applybot.lucasguilhot.fr</div>
+    </div>
+    <p class="stack">Next.js · TypeScript · Node · PostgreSQL · Docker</p>
+    <ul>
+      <li>Trois rôles, sessions signées, places et quotas par organisme.</li>
+      <li>7 sources d'offres collectées et dédupliquées.</li>
+      <li>Fournisseur d'IA retiré après mesure : 0 € de coût par candidature. 202 tests automatisés.</li>
+    </ul>
+  </div>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">Le Local <span class="sep">— Réservation d'un tiers-lieu, projet d'équipe repris seul</span></div>
+      <div class="lien">lelocal.lucasguilhot.fr</div>
+    </div>
+    <p class="stack">React · TypeScript · Express · MySQL · Stripe · Docker</p>
+    <ul>
+      <li>Sécurité des routes, migrations versionnées, concurrence sur les réservations.</li>
+      <li>Image Docker ramenée de 113 Mo à 8,7 Mo.</li>
+      <li>213 tests ajoutés là où il n'y en avait aucun.</li>
+    </ul>
+  </div>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">selv. &amp; SkinMatch <span class="sep">— Boutique en ligne et moteur de recommandation</span></div>
+      <div class="lien">selv.shop</div>
+    </div>
+    <p class="stack">Shopify · Python · FastAPI · JavaScript · Docker</p>
+    <ul>
+      <li>Marque de cosmétiques créée et mise en ligne, 29 références.</li>
+      <li>Diagnostic intégré : le modèle de langage rédige, le moteur décide — aucun produit choisi par le modèle, vérifié par test. 61 tests automatisés.</li>
+    </ul>
+  </div>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">Vault Rush <span class="sep">— Arcade en monnaie fictive : 7 jeux sur un moteur commun, 391 tests automatisés</span></div>
+      <div class="lien">vault-rush.lucasguilhot.fr</div>
+    </div>
+    <p class="stack">React · TypeScript · Express · SQLite · Docker</p>
+  </div>
+</section>
+
+<section>
+  <h2>Expériences professionnelles</h2>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">Coordinateur logistique, dispatcher et manager <span class="sep">— CDI</span></div>
+      <div class="date">2023 – 2025</div>
+    </div>
+    <p class="stack">TR Express · UTS</p>
+    <ul>
+      <li>Organisation et suivi de livraisons nationales et internationales.</li>
+      <li>Coordination des tournées et gestion des flux logistiques.</li>
+      <li>Management d'équipe.</li>
+    </ul>
+  </div>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">Missions d'intérim <span class="sep">— logistique et manutention</span></div>
+      <div class="date">2020 – 2023</div>
+    </div>
+    <ul>
+      <li>Préparation de commandes, manutention, employé polyvalent (Castorama).</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <h2>Formation</h2>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">Développeur web <span class="sep">— titre RNCP niveau 5 (Bac+2)</span></div>
+      <div class="date">2026</div>
+    </div>
+    <p class="stack">Wild Code School — applications web, intégration d'interfaces, API Node et FastAPI, bases de données, travail en équipe (agile).</p>
+  </div>
+
+  <div class="bloc">
+    <div class="ligne">
+      <div class="titre">Lycée professionnel <span class="sep">— gestion administration, puis électricité</span></div>
+      <div class="date">2017 – 2019</div>
+    </div>
+    <p class="stack">Lycée Pierre d'Aragon (Muret) · Lycée Montel (Colomiers)</p>
+  </div>
+</section>
+
+<section>
+  <h2>Langues et centres d'intérêt</h2>
+  <p class="comp"><b>Langues</b> <span>Français — langue maternelle · Anglais — B1</span></p>
+  <p class="comp"><b>Intérêts</b> <span>Lutte et MMA depuis 9 ans, encadrement ponctuel de séances · Guitare</span></p>
+</section>
+
+</body>
+</html>
