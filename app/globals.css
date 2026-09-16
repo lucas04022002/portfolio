@@ -21,6 +21,11 @@
   /* accent unique — rouge de performance, employé avec parcimonie */
   --color-accent: #e01a2b;
   --color-accent-soft: #ff6b6b;
+  /* Le rouge de la charte porte mal du texte : #f5f5f3 sur #e01a2b donne 4,42
+     de contraste, sous les 4,5 exigés pour du texte courant. Cette nuance à
+     peine plus sombre monte à 4,87 et reste indiscernable à l'œil. Réservée
+     aux fonds pleins qui portent du texte — la banderole de disponibilité. */
+  --color-accent-deep: #d4162a;
 
   --font-sans: var(--font-geist-sans), system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
@@ -122,9 +127,33 @@ body {
   transform: none;
 }
 
+/* La banderole de disponibilité.
+ *
+ * Le contenu est écrit deux fois côte à côte et la piste se translate de la
+ * moitié de sa largeur : au bout du cycle, la seconde copie occupe exactement
+ * la place de la première, et la boucle ne se voit pas.
+ *
+ * L'animation s'arrête au survol et au focus clavier — une norme d'accessibilité
+ * demande de pouvoir interrompre un contenu en mouvement. Sous
+ * `prefers-reduced-motion`, elle ne démarre pas du tout : la bande devient une
+ * ligne fixe, et le message reste lisible, ce qui est le seul point qui compte.
+ */
+@keyframes defile {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@utility defile {
+  animation: defile 32s linear infinite;
+}
+.banderole:hover .defile,
+.banderole:focus-within .defile {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .rise { animation: none; opacity: 1; transform: none; }
+  .defile { animation: none; transform: none; }
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;

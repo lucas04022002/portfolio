@@ -2,6 +2,7 @@
 
 import { useMode } from "@/lib/mode";
 import { Hero } from "@/components/home/Hero";
+import { Disponibilite } from "@/components/home/Disponibilite";
 import { Gateway } from "@/components/home/Gateway";
 import { BehindTheProduct } from "@/components/home/BehindTheProduct";
 import { About, Contact, Expertise, Faq, Livrables, Process, SelectedWork, Services } from "@/components/home/Sections";
@@ -18,6 +19,7 @@ export function HomeShell() {
   return (
     <>
       <Hero />
+      <Disponibilite />
       <Gateway />
       {mode === "recruiter" ? (
         <>
