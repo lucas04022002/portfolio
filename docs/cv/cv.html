@@ -41,6 +41,7 @@
   }
 
   a { color: inherit; text-decoration: none; }
+  .lien a { color: var(--accent); }
 
   /* ---------------------------------------------------------- en-tête */
 
@@ -59,7 +60,6 @@
     font-size: 10.6pt;
     font-weight: 600;
     color: var(--accent);
-    letter-spacing: 0.005em;
   }
 
   .contact {
@@ -75,13 +75,17 @@
 
   /* --------------------------------------------------------- sections */
 
-  section { margin-top: 8px; }
+  section { margin-top: 11px; }
 
   h2 {
     margin: 0 0 7px;
-    font-size: 8pt;
+    font-size: 8.4pt;
     font-weight: 700;
-    letter-spacing: 0.13em;
+    /* Aucun letter-spacing : pdfminer, utilisé par beaucoup de chaînes ATS,
+       restitue « P R O F I L » dès qu'un espacement écarte les glyphes, et le
+       mot devient introuvable. La hiérarchie tient à la graisse, à la couleur
+       et au filet — pas à l'espacement. */
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--accent);
     border-bottom: 1px solid var(--trait);
@@ -95,7 +99,7 @@
 
   /* ----------------------------------------------------------- blocs */
 
-  .bloc { margin-bottom: 7px; page-break-inside: avoid; }
+  .bloc { margin-bottom: 9px; page-break-inside: avoid; }
   .bloc:last-child { margin-bottom: 0; }
 
   .ligne {
@@ -121,7 +125,6 @@
     margin: 0 0 2px;
     font-size: 8.7pt;
     color: var(--clair);
-    letter-spacing: 0.01em;
   }
 
   ul { margin: 0; padding-left: 14px; }
@@ -154,10 +157,12 @@
   <p class="contact">
     <span>Toulouse / Remote</span>
     <span>06 25 90 84 11</span>
-    <span>lucasguilhot7@gmail.com</span>
-    <span>lucasguilhot.fr</span>
-    <span>github.com/lucas04022002</span>
-    <span>linkedin.com/in/guilhot-lucas</span>
+    <span><a href="mailto:lucasguilhot7@gmail.com">lucasguilhot7@gmail.com</a></span>
+  </p>
+  <p class="contact">
+    <span><a href="https://lucasguilhot.fr">lucasguilhot.fr</a></span>
+    <span><a href="https://github.com/lucas04022002">github.com/lucas04022002</a></span>
+    <span><a href="https://www.linkedin.com/in/guilhot-lucas">linkedin.com/in/guilhot-lucas</a></span>
   </p>
 </header>
 
@@ -186,7 +191,7 @@
   <div class="bloc">
     <div class="ligne">
       <div class="titre">RushPlay <span class="sep">— SaaS d'analyse du marché des paris sportifs</span></div>
-      <div class="lien">rushplay.fr</div>
+      <div class="lien"><a href="https://rushplay.fr">rushplay.fr</a></div>
     </div>
     <p class="stack">Next.js · TypeScript · FastAPI · Python · PostgreSQL · Docker</p>
     <ul>
@@ -198,7 +203,7 @@
   <div class="bloc">
     <div class="ligne">
       <div class="titre">ApplyBot <span class="sep">— SaaS B2B pour organismes de formation</span></div>
-      <div class="lien">applybot.lucasguilhot.fr</div>
+      <div class="lien"><a href="https://applybot.lucasguilhot.fr">applybot.lucasguilhot.fr</a></div>
     </div>
     <p class="stack">Next.js · TypeScript · Node · PostgreSQL · Docker</p>
     <ul>
@@ -210,7 +215,7 @@
   <div class="bloc">
     <div class="ligne">
       <div class="titre">Le Local <span class="sep">— Réservation d'un tiers-lieu, projet d'équipe repris seul</span></div>
-      <div class="lien">lelocal.lucasguilhot.fr</div>
+      <div class="lien"><a href="https://lelocal.lucasguilhot.fr">lelocal.lucasguilhot.fr</a></div>
     </div>
     <p class="stack">React · TypeScript · Express · MySQL · Stripe · Docker</p>
     <ul>
@@ -221,19 +226,20 @@
 
   <div class="bloc">
     <div class="ligne">
-      <div class="titre">selv. &amp; SkinMatch <span class="sep">— Boutique en ligne et moteur de recommandation</span></div>
-      <div class="lien">selv.shop</div>
+      <div class="titre">selv. <span class="sep">— E-commerce cosmétique &amp; moteur de recommandation</span></div>
+      <div class="lien"><a href="https://selv.shop">selv.shop</a></div>
     </div>
     <p class="stack">Shopify · Python · FastAPI · JavaScript · Docker</p>
     <ul>
-      <li>Marque de cosmétiques créée et mise en ligne, 29 références. Diagnostic intégré : le modèle de langage rédige, le moteur décide. 61 tests.</li>
+      <li>Marque de cosmétiques créée et mise en ligne, 29 références.</li>
+      <li><strong>SkinMatch</strong>, le moteur de recommandation intégré à la boutique : le modèle de langage rédige, le moteur décide. 61 tests.</li>
     </ul>
   </div>
 
   <div class="bloc">
     <div class="ligne">
       <div class="titre">Vault Rush <span class="sep">— Arcade en monnaie fictive : 7 jeux sur un moteur commun, 391 tests automatisés</span></div>
-      <div class="lien">vault-rush.lucasguilhot.fr</div>
+      <div class="lien"><a href="https://vault-rush.lucasguilhot.fr">vault-rush.lucasguilhot.fr</a></div>
     </div>
     <p class="stack">React · TypeScript · Express · SQLite · Docker</p>
   </div>
@@ -276,13 +282,6 @@
     <p class="stack">Wild Code School — applications web, intégration d'interfaces, API Node et FastAPI, bases de données, travail en équipe (agile).</p>
   </div>
 
-  <div class="bloc">
-    <div class="ligne">
-      <div class="titre">Lycée professionnel <span class="sep">— gestion administration, puis électricité</span></div>
-      <div class="date">2017 – 2019</div>
-    </div>
-    <p class="stack">Lycée Pierre d'Aragon (Muret) · Lycée Montel (Colomiers)</p>
-  </div>
 </section>
 
 <section>
