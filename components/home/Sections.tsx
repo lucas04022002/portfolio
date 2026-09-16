@@ -247,7 +247,7 @@ export function About() {
 
           <div className="mt-12 grid gap-8 sm:grid-cols-3">
             <MetricBlock value="5" label="produits construits" source="dont quatre seul, de bout en bout" />
-            <MetricBlock value="1 128" label="tests automatisés" source="comptés dans les cinq dépôts" />
+            <MetricBlock value="1 134" label="tests automatisés" source="comptés dans les cinq dépôts" />
             <MetricBlock value="1" label="modèle supprimé" source="après un test hors échantillon défavorable" accent />
           </div>
         </Reveal>

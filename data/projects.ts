@@ -405,7 +405,7 @@ export const projects: Project[] = [
       },
     ],
     metrics: [
-      { value: "207", label: "tests automatisés", source: "ajoutés à la reprise, du panier au paiement" },
+      { value: "213", label: "tests automatisés", source: "ajoutés à la reprise, du panier au paiement" },
       { value: "113 → 8,7 Mo", label: "image Docker", source: "construction en plusieurs étapes, sans outillage de développement", key: true },
     ],
     lessons: [
