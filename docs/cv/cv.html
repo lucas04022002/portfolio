@@ -14,7 +14,7 @@
      du texte sélectionnable. Titres de sections aux intitulés attendus.
      ------------------------------------------------------------------ */
 
-  @page { size: A4; margin: 10mm 14mm; }
+  @page { size: A4; margin: 11mm 15mm; }
 
   :root {
     --encre: #16181d;
@@ -31,8 +31,8 @@
   body {
     margin: 0;
     font-family: "Calibri", "Carlito", "Helvetica Neue", Arial, sans-serif;
-    font-size: 8.9pt;
-    line-height: 1.33;
+    font-size: 9.3pt;
+    line-height: 1.42;
     color: var(--encre);
     background: #fff;
     /* Les ligatures (ﬁ, ﬃ) sont extraites telles quelles du PDF : un robot de
@@ -75,10 +75,10 @@
 
   /* --------------------------------------------------------- sections */
 
-  section { margin-top: 6px; }
+  section { margin-top: 9px; }
 
   h2 {
-    margin: 0 0 4px;
+    margin: 0 0 7px;
     font-size: 8pt;
     font-weight: 700;
     letter-spacing: 0.13em;
@@ -95,7 +95,7 @@
 
   /* ----------------------------------------------------------- blocs */
 
-  .bloc { margin-bottom: 6px; page-break-inside: avoid; }
+  .bloc { margin-bottom: 8px; page-break-inside: avoid; }
   .bloc:last-child { margin-bottom: 0; }
 
   .ligne {
@@ -125,13 +125,13 @@
   }
 
   ul { margin: 0; padding-left: 14px; }
-  li { margin-bottom: 0.5px; color: var(--gris); }
+  li { margin-bottom: 2px; color: var(--gris); }
   li::marker { color: var(--trait); }
   li strong { color: var(--encre); font-weight: 600; }
 
   /* ------------------------------------------------------ compétences */
 
-  .comp { margin-bottom: 1.5px; }
+  .comp { margin-bottom: 3px; }
   .comp b {
     display: inline-block;
     min-width: 74px;
@@ -164,19 +164,17 @@
 <section>
   <h2>Profil</h2>
   <p class="profil">
-    Développeur full-stack. Je conçois et développe des produits web complets : interface, API,
-    base de données et mise en production. Une préférence pour les produits qui traitent de la
-    donnée ou automatisent quelque chose. <strong>Cinq produits en ligne, dont quatre réalisés
-    seul de bout en bout.</strong> Après deux ans à coordonner des livraisons et encadrer une
-    équipe, je cherche un poste où l'on mesure avant d'affirmer, et où l'on met en ligne ce
-    qu'on écrit.
+    <strong>À la recherche d'un CDI de développeur full-stack.</strong> Interface, API, base de
+    données et mise en production. <strong>Cinq produits en ligne, dont quatre réalisés seul de
+    bout en bout.</strong> Deux ans de coordination logistique et de management avant la
+    reconversion.
   </p>
 </section>
 
 <section>
   <h2>Compétences techniques</h2>
-  <p class="comp"><b>Langages</b> <span>TypeScript · JavaScript · Python · SQL</span></p>
-  <p class="comp"><b>Frontend</b> <span>React · Next.js · HTML/CSS · Tailwind</span></p>
+  <p class="comp"><b>Langages</b> <span>TypeScript · JavaScript · Python · Java · SQL</span></p>
+  <p class="comp"><b>Frontend</b> <span>React · Next.js · Angular · React Native · HTML/CSS · Tailwind</span></p>
   <p class="comp"><b>Backend</b> <span>Node · Express · FastAPI · API REST · Authentification, rôles et sessions</span></p>
   <p class="comp"><b>Données</b> <span>PostgreSQL · MySQL · SQLite · Migrations versionnées · pandas</span></p>
   <p class="comp"><b>Livraison</b> <span>Docker · GitHub Actions · VPS et Coolify · Tests automatisés · Git</span></p>
@@ -192,9 +190,8 @@
     </div>
     <p class="stack">Next.js · TypeScript · FastAPI · Python · PostgreSQL · Docker</p>
     <ul>
-      <li>6 sources de cotes collectées plusieurs fois par jour, dédupliquées, avec reprise après panne.</li>
-      <li><strong>Modèle prédictif construit, testé hors échantillon sur 1 752 matchs jamais vus, puis retiré du produit</strong> : log-loss 1,004 contre 0,978 pour le bookmaker.</li>
-      <li>267 tests automatisés · accessibilité 100/100.</li>
+      <li>Collecte de 6 sources de cotes, dédupliquées, avec reprise après panne. 267 tests automatisés.</li>
+      <li><strong>Modèle prédictif construit, testé hors échantillon sur 1 752 matchs, puis retiré du produit</strong> : log-loss 1,004 contre 0,978 pour le bookmaker.</li>
     </ul>
   </div>
 
@@ -205,9 +202,8 @@
     </div>
     <p class="stack">Next.js · TypeScript · Node · PostgreSQL · Docker</p>
     <ul>
-      <li>Trois rôles, sessions signées, places et quotas par organisme.</li>
-      <li>7 sources d'offres collectées et dédupliquées.</li>
-      <li>Fournisseur d'IA retiré après mesure : 0 € de coût par candidature. 202 tests automatisés.</li>
+      <li>Trois rôles, sessions signées, quotas par organisme, 7 sources d'offres dédupliquées. 202 tests.</li>
+      <li>Fournisseur d'IA retiré après mesure : 0 € de coût par candidature.</li>
     </ul>
   </div>
 
@@ -219,8 +215,7 @@
     <p class="stack">React · TypeScript · Express · MySQL · Stripe · Docker</p>
     <ul>
       <li>Sécurité des routes, migrations versionnées, concurrence sur les réservations.</li>
-      <li>Image Docker ramenée de 113 Mo à 8,7 Mo.</li>
-      <li>213 tests ajoutés là où il n'y en avait aucun.</li>
+      <li>Image Docker ramenée de 113 Mo à 8,7 Mo. 213 tests ajoutés là où il n'y en avait aucun.</li>
     </ul>
   </div>
 
@@ -231,8 +226,7 @@
     </div>
     <p class="stack">Shopify · Python · FastAPI · JavaScript · Docker</p>
     <ul>
-      <li>Marque de cosmétiques créée et mise en ligne, 29 références.</li>
-      <li>Diagnostic intégré : le modèle de langage rédige, le moteur décide — aucun produit choisi par le modèle, vérifié par test. 61 tests automatisés.</li>
+      <li>Marque de cosmétiques créée et mise en ligne, 29 références. Diagnostic intégré : le modèle de langage rédige, le moteur décide. 61 tests.</li>
     </ul>
   </div>
 
@@ -255,8 +249,7 @@
     </div>
     <p class="stack">TR Express · UTS</p>
     <ul>
-      <li>Organisation et suivi de livraisons nationales et internationales.</li>
-      <li>Coordination des tournées et gestion des flux logistiques.</li>
+      <li>Livraisons nationales et internationales, coordination des tournées et des flux.</li>
       <li>Management d'équipe.</li>
     </ul>
   </div>
@@ -294,8 +287,7 @@
 
 <section>
   <h2>Langues et centres d'intérêt</h2>
-  <p class="comp"><b>Langues</b> <span>Français — langue maternelle · Anglais — B1</span></p>
-  <p class="comp"><b>Intérêts</b> <span>Lutte et MMA depuis 9 ans, encadrement ponctuel de séances · Guitare</span></p>
+  <p class="profil">Français — langue maternelle · Anglais — B1 · Lutte et MMA depuis 9 ans, encadrement ponctuel de séances · Guitare</p>
 </section>
 
 </body>
