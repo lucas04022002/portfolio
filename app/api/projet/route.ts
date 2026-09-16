@@ -49,6 +49,7 @@ function texte(d: DemandeProjet): string {
     `Entreprise  : ${d.entreprise.trim() || "—"}`,
     `Type        : ${d.type}`,
     `Budget      : ${d.budget || "non précisé"}`,
+    `Délai       : ${d.delai || "non précisé"}`,
     "",
     "Description :",
     d.description.trim(),
@@ -80,6 +81,7 @@ export async function POST(req: Request) {
     entreprise: String(corps.entreprise ?? ""),
     type: String(corps.type ?? ""),
     budget: String(corps.budget ?? ""),
+    delai: String(corps.delai ?? ""),
     description: String(corps.description ?? ""),
   };
 

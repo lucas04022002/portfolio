@@ -82,3 +82,23 @@ export const faq: { q: string; a: string }[] = [
     a: "Quand elle apporte quelque chose. Sur un de mes produits, je l’ai retirée : elle coûtait un abonnement par utilisateur pour un résultat que le client obtenait gratuitement ailleurs.",
   },
 ];
+
+/** Ce que le client repart avec — la section qui lève les craintes, pas celle qui vend. */
+export const livrables: { title: string; body: string }[] = [
+  {
+    title: "Un produit complet",
+    body: "Interface, backend, base de données et mise en production. Pas une maquette, pas une démonstration : un produit qui tourne à une adresse.",
+  },
+  {
+    title: "Un code qui vous appartient",
+    body: "Le dépôt, la documentation, les accès d’hébergement et vos données vous sont transmis à la livraison.",
+  },
+  {
+    title: "Une version à regarder pendant la construction",
+    body: "Vous voyez le produit avancer à chaque palier, sur une vraie adresse. Vous corrigez le tir pendant, pas après.",
+  },
+  {
+    title: "Aucune dépendance forcée",
+    body: "Vous continuez avec moi, avec votre équipe, ou avec quelqu’un d’autre. Rien dans le produit n’est verrouillé sur moi.",
+  },
+];

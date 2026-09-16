@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useMode } from "@/lib/mode";
-import { projects, featuredProjects } from "@/data/projects";
-import { expertise, services, process, faq } from "@/data/expertise";
+import { projects, featuredFor } from "@/data/projects";
+import { expertise, services, process, faq, livrables } from "@/data/expertise";
 import { CONTACT, PARCOURS } from "@/data/site";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { ProjectForm } from "@/components/home/ProjectForm";
@@ -15,6 +15,7 @@ import { ArrowLink, Button, Eyebrow, MetricBlock, Section } from "@/components/u
 export function SelectedWork() {
   const { mode } = useMode();
   const others = projects.filter((p) => !p.featured);
+  const mis_en_avant = featuredFor(mode);
 
   return (
     <Section id="projets">
@@ -25,13 +26,13 @@ export function SelectedWork() {
         </h2>
         <p className="lede mt-5">
           {mode === "recruiter"
-            ? "Conçus, développés et déployés seul — de la base de données à la mise en production."
+            ? "Cinq produits construits et mis en ligne — dont quatre réalisés seul de bout en bout, de la base de données à la mise en production."
             : "Chacun part d'un problème concret et finit en produit utilisable. Les chiffres affichés sont mesurés, jamais estimés."}
         </p>
       </Reveal>
 
       <div className="mt-16 grid gap-x-10 gap-y-20 lg:grid-cols-2">
-        {featuredProjects.map((p, i) => (
+        {mis_en_avant.map((p, i) => (
           <Reveal
             key={p.slug}
             delay={0.06 * i}
@@ -129,6 +130,27 @@ export function Services() {
           Construit avec Next.js · React · TypeScript · Node · Python · FastAPI · PostgreSQL · Docker
         </p>
       </Reveal>
+    </Section>
+  );
+}
+
+/** §11 du guide : ce que le client repart avec. Quatre craintes, quatre réponses. */
+export function Livrables() {
+  return (
+    <Section id="livrables">
+      <Reveal>
+        <Eyebrow>Ce que vous obtenez</Eyebrow>
+        <h2 className="display-l max-w-[18ch]">À la fin, le produit est à vous.</h2>
+      </Reveal>
+
+      <div className="mt-14 grid gap-x-10 gap-y-12 md:grid-cols-2">
+        {livrables.map((l, i) => (
+          <Reveal key={l.title} delay={0.05 * i}>
+            <h3 className="text-[21px] font-medium text-bright">{l.title}</h3>
+            <p className="mt-4 max-w-[52ch] text-[15.5px] leading-relaxed text-muted">{l.body}</p>
+          </Reveal>
+        ))}
+      </div>
     </Section>
   );
 }

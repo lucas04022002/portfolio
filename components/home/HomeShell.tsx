@@ -4,7 +4,7 @@ import { useMode } from "@/lib/mode";
 import { Hero } from "@/components/home/Hero";
 import { Gateway } from "@/components/home/Gateway";
 import { BehindTheProduct } from "@/components/home/BehindTheProduct";
-import { About, Contact, Expertise, Faq, Process, SelectedWork, Services } from "@/components/home/Sections";
+import { About, Contact, Expertise, Faq, Livrables, Process, SelectedWork, Services } from "@/components/home/Sections";
 
 /**
  * L'ordre des sections change avec le visiteur.
@@ -32,6 +32,7 @@ export function HomeShell() {
           <Services />
           <SelectedWork />
           <Process />
+          <Livrables />
           <BehindTheProduct />
           <Faq />
           <About />

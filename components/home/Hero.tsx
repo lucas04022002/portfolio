@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import { useMode } from "@/lib/mode";
+import { useMode, type Mode } from "@/lib/mode";
 import { Button } from "@/components/ui/primitives";
 import { CONTACT, STACK_LINE } from "@/data/site";
 
@@ -17,26 +17,33 @@ import { CONTACT, STACK_LINE } from "@/data/site";
 const pas = (i: number): CSSProperties => ({ "--d": `${0.06 * i}s` } as CSSProperties);
 
 export function Hero() {
-  const { mode } = useMode();
+  const { mode, chosen, setMode } = useMode();
 
   const lines =
-    mode === "recruiter"
+    !chosen
+      ? ["Je transforme", "des idées", "en produits."]
+      : mode === "recruiter"
       ? ["Je transforme", "des idées", "en produits."]
       : ["Vous avez l’idée.", "Je construis", "le produit."];
 
   const lede =
-    mode === "recruiter"
-      ? "Développeur full-stack. Je conçois et développe des applications web, des APIs et des produits qui traitent de la donnée — de la base de données à la mise en production."
-      : "Applications web, SaaS, automatisation et traitement de données. Je pars d’un problème métier et je livre un produit en ligne, testé et documenté.";
+    !chosen
+      ? "Développeur full-stack. Applications web, APIs, automatisation et traitement de données — de la base de données à la mise en production."
+      : mode === "recruiter"
+        ? "Développeur full-stack. Je conçois et développe des applications web, des APIs et des produits qui traitent de la donnée — de la base de données à la mise en production."
+        : "Applications web, SaaS, automatisation et traitement de données. Je pars d’un problème métier et je livre un produit en ligne, testé et documenté.";
 
-  const stack = mode === "recruiter" ? STACK_LINE : "Applications web · SaaS · Automatisation · Données & IA";
+  const stack =
+    chosen && mode === "freelance" ? "Applications web · SaaS · Automatisation · Données & IA" : STACK_LINE;
 
   return (
     <section className="relative overflow-hidden bg-void pt-36 pb-20 md:pt-44 md:pb-28">
       <div className="page grid items-center gap-14 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)] lg:gap-20">
         <div>
           <p className="eyebrow rise" style={pas(0)}>
-            {mode === "recruiter" ? "Développeur full-stack · Toulouse" : "Freelance · Produits numériques"}
+            {chosen && mode === "freelance"
+              ? "Freelance · Applications web, SaaS & automatisation · Toulouse / Remote"
+              : "Développeur full-stack · Produits web, données & automatisation · Toulouse / Remote"}
           </p>
 
           <h1 className="display-xl mt-7">
@@ -51,6 +58,33 @@ export function Hero() {
             {lede}
           </p>
 
+          {!chosen && (
+            <div className="rise mt-10" style={pas(5)}>
+              <p className="eyebrow mb-4">Vous êtes ici pour</p>
+              <div className="flex flex-wrap gap-3">
+                {(
+                  [
+                    { m: "recruiter", label: "Recruter un développeur" },
+                    { m: "freelance", label: "Construire un projet" },
+                  ] as { m: Mode; label: string }[]
+                ).map(({ m, label }) => (
+                  <button
+                    key={m}
+                    type="button"
+                    onClick={() => setMode(m)}
+                    className="group inline-flex items-center gap-2.5 rounded-full border border-edge bg-card px-6 py-3.5 text-[15px] font-medium text-bright transition-all duration-300 hover:border-bright"
+                  >
+                    {label}
+                    <span aria-hidden className="text-faint transition-transform duration-300 group-hover:translate-x-1 group-hover:text-bright">
+                      →
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {chosen && (
           <div className="rise mt-10 flex flex-wrap items-center gap-3" style={pas(5)}>
             {mode === "recruiter" ? (
               <>
@@ -76,6 +110,7 @@ export function Hero() {
               </>
             )}
           </div>
+          )}
 
           <p className="rise mt-12 font-mono text-[12px] tracking-[0.08em] text-faint" style={pas(6)}>
             {stack}
@@ -83,9 +118,11 @@ export function Hero() {
 
           <p className="rise mt-6 inline-flex items-center gap-2.5 text-[13.5px] text-muted" style={pas(7)}>
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent" />
-            {mode === "recruiter"
-              ? "Disponible pour un CDI, un CDD ou une mission longue"
-              : "Disponible pour de nouveaux projets"}
+            {!chosen
+              ? "Disponible pour un CDI, un CDD ou des missions freelance"
+              : mode === "recruiter"
+                ? "Disponible pour un CDI, un CDD ou une mission longue"
+                : "Disponible pour de nouveaux projets"}
           </p>
         </div>
 

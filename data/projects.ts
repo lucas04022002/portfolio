@@ -423,7 +423,27 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((p) => p.featured);
+/**
+ * L'ordre de lecture dépend de qui lit.
+ *
+ * Un recruteur doit voir d'abord l'étendue technique — architecture complète,
+ * produit métier, reprise d'existant — avant l'arcade : deux produits liés au
+ * pari et au casino en tête réduiraient le profil à ce seul terrain, alors
+ * qu'il est bien plus large. Un client, lui, reconnaît d'abord un vrai
+ * commerce en ligne qui tourne : c'est la preuve la plus parlante.
+ */
+const ORDRE: Record<"recruiter" | "freelance", string[]> = {
+  recruiter: ["rushplay", "applybot", "le-local", "selv-skinmatch", "vault-rush"],
+  freelance: ["selv-skinmatch", "rushplay", "applybot", "le-local", "vault-rush"],
+};
+
+export function featuredFor(mode: "recruiter" | "freelance"): Project[] {
+  const rang = ORDRE[mode];
+  return projects
+    .filter((p) => p.featured)
+    .sort((a, b) => rang.indexOf(a.slug) - rang.indexOf(b.slug));
+}
+
 
 export function projectBySlug(slug: string): Project | undefined {
   return projects.find((p) => p.slug === slug);

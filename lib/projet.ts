@@ -21,12 +21,20 @@ export const BUDGETS = [
   "À définir ensemble",
 ] as const;
 
+export const DELAIS = [
+  "Dès que possible",
+  "Dans 1 à 2 mois",
+  "Dans 3 mois ou plus",
+  "Pas encore défini",
+] as const;
+
 export type DemandeProjet = {
   nom: string;
   email: string;
   entreprise: string;
   type: string;
   budget: string;
+  delai: string;
   description: string;
 };
 
@@ -36,11 +44,12 @@ export const CHAMPS_VIDES: DemandeProjet = {
   entreprise: "",
   type: "",
   budget: "",
+  delai: "",
   description: "",
 };
 
 /** Limites hautes : elles protègent la boîte mail autant que le serveur. */
-const MAX = { nom: 120, email: 200, entreprise: 160, type: 60, budget: 40, description: 4000 };
+const MAX = { nom: 120, email: 200, entreprise: 160, type: 60, budget: 40, delai: 40, description: 4000 };
 
 /**
  * Une adresse est valide si elle a une partie locale, une arobase, un domaine
@@ -71,6 +80,9 @@ export function valider(d: DemandeProjet): Erreurs {
 
   if (d.budget.trim() && !BUDGETS.includes(d.budget as (typeof BUDGETS)[number]))
     e.budget = "Choisissez un budget dans la liste.";
+
+  if (d.delai.trim() && !DELAIS.includes(d.delai as (typeof DELAIS)[number]))
+    e.delai = "Choisissez un délai dans la liste.";
 
   const description = d.description.trim();
   if (description.length < 20)
