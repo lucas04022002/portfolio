@@ -238,9 +238,14 @@ export function About() {
               problème, je comprends comment il fonctionne vraiment, puis je construis la solution
               entière — interface, backend, base de données, intégrations, mise en production.
             </p>
+            {/* Les deux modes annoncent maintenant un bénéfice pour le lecteur. La version
+                recruteur demandait auparavant « une équipe où l'on mesure avant d'affirmer » :
+                une exigence posée à l'employeur, qui sous-entendait que les autres en sont
+                incapables, et qui laissait sans introduction les trois chiffres juste en
+                dessous — dont « 1 modèle supprimé », la meilleure preuve de la page. */}
             <p className="text-bright">
               {mode === "recruiter"
-                ? "Ce que je cherche : une équipe où l'on mesure avant d'affirmer, et où l'on met en ligne ce qu'on écrit."
+                ? "Ce que j'apporte : un développeur qui livre en production, qui teste ce qu'il écrit, et qui sait retirer ce qui ne marche pas."
                 : "Ce que vous obtenez : un interlocuteur unique, du premier échange à la mise en ligne, et un produit que vous gardez."}
             </p>
           </div>
